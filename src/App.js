@@ -4,35 +4,24 @@ import Thankyou from "./Thankyou";
 import { useState } from "react";
 
 function App() {
+  const [valueSubmit, setValueSubmit] = useState(false);
+  const [clickedDiv, setClickedDiv] = useState({});
 
-   const [valueSubmit,setValueSubmit]=useState(false);
-  const [clickedDiv,setClickedDiv]=useState({});
+  const handleClick = (e) => {
+    e.preventDefault();
+    setValueSubmit(true);
+  };
 
-  const handleClick=(e)=>{
-    
-e.preventDefault();
-setValueSubmit(true)
-
-  }
-
-  const handleDivClick=(divinfo)=>{
-  
+  const handleDivClick = (divinfo) => {
     console.log(divinfo);
-setClickedDiv(divinfo);
-
-  }
-
- 
+    setClickedDiv(divinfo);
+  };
 
   return (
     <div className="grid-xl">
-      
-     
       {valueSubmit ? (
-        // Render a new component when the form is submitted
         <Thankyou divinfo={clickedDiv.id} />
       ) : (
-
         <div className="grid-xl container">
           <div className="circle ">
             <img src={star} alt="" />
@@ -50,28 +39,33 @@ setClickedDiv(divinfo);
           </div>
 
           <div className="flex">
-            <div className="circle"  onClick={()=>handleDivClick({id:1})} >1</div>
+            <div className="circle" onClick={() => handleDivClick({ id: 1 })}>
+              1
+            </div>
 
-            <div className="circle"onClick={()=>handleDivClick({id:2})}>2</div>
+            <div className="circle" onClick={() => handleDivClick({ id: 2 })}>
+              2
+            </div>
 
-            <div className="circle" onClick={()=>handleDivClick({id:3})}>3</div>
+            <div className="circle" onClick={() => handleDivClick({ id: 3 })}>
+              3
+            </div>
 
-            <div className="circle" onClick={()=>handleDivClick({id:4})}>4</div>
+            <div className="circle" onClick={() => handleDivClick({ id: 4 })}>
+              4
+            </div>
 
-            <div className="circle" onClick={()=>handleDivClick({id:5})}>5</div>
+            <div className="circle" onClick={() => handleDivClick({ id: 5 })}>
+              5
+            </div>
           </div>
-          <button className="btn flex" onClick={handleClick} >Submit</button>
-          
-          
-          
-         
-        </div>)}
-     
+          <button className="btn flex" onClick={handleClick}>
+            Submit
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
 export default App;
-/* <div className="flex">
-           
-          </div> */
